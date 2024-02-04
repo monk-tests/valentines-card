@@ -1,0 +1,202 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.envelope {
+    /* border: 2px solid blue; */
+    position: relative;
+    font-weight: 600;
+    cursor: pointer;
+    animation: bounce 2000ms linear infinite forwards;
+}
+.container {
+    height: 100dvh;
+    width: 100vw;
+    background-color: #fce7f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back {
+    height: 250px;
+    width: 400px;
+    background-color: #c8646f;
+    position: relative;
+}
+
+.back-top {
+    position: absolute;
+    top: -300px;
+    width: 400px;
+    height: 300px;
+    z-index: 5;
+    transform-origin: bottom;
+    transition: all 300ms linear;
+    overflow: hidden;
+    /* background-color: red; */
+    /* transform: rotateX(140deg); */
+}
+.back-top {
+    transform: rotateX(140deg);
+}
+.back-top-top {
+    background-color: #c86470;
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 160px;
+    left: 50px;
+    border-top-left-radius: 30px;
+    transform: rotate(45deg);
+    transition: all 1000ms ease;
+}
+.envelope.open .back-top {
+    /* transform: rotateX(0deg); */
+    animation: envelopeOpen 500ms linear 100ms forwards;
+}
+.envelope.close .back-top {
+    animation: envelopeClose 1000ms linear 00ms forwards;
+}
+
+.envelope.open .card {
+    animation: cardOpen 400ms linear 700ms forwards;
+}
+.envelope.close .card {
+    animation: cardClose 650ms linear 00ms forwards;
+}
+.front-left {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 250px solid transparent;
+    border-bottom: 00px solid transparent;
+    border-left: 400px solid #f2a79c;
+    z-index: 4;
+}
+.front-right {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 250px solid transparent;
+    border-bottom: 00px solid transparent;
+    border-right: 400px solid #ea8e91;
+    z-index: 3;
+}
+.card {
+    background-color: #e9e4b8;
+    width: 370px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 240px;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    border-radius: 3px;
+    outline: 3px dotted black;
+    outline-offset: -14px;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    transition: all 300ms linear;
+    transition-delay: 500ms;
+
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+}
+
+.text {
+    font-family: 'Dancing Script', cursive;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: 40px;
+}
+.heart svg {
+    height: 80px;
+    stroke: #f43f5e;
+    fill: #f43f5e;
+}
+
+@keyframes envelopeOpen {
+    0% {
+        transform: rotateX(140deg);
+        /* background-color: rgba(0, 140, 255, 0.486); */
+        /* z-index: 6; */
+    }
+    100% {
+        transform: rotateX(0deg);
+        z-index: 1;
+    }
+}
+@keyframes envelopeClose {
+    0% {
+        transform: rotateX(0deg);
+        z-index: 1;
+    }
+    50% {
+        transform: rotateX(0deg);
+        z-index: 1;
+    }
+    100% {
+        transform: rotateX(140deg);
+        /* background-color: rgba(0, 140, 255, 0.486); */
+        z-index: 6;
+    }
+}
+@keyframes cardOpen {
+    0% {
+        top: 5px;
+    }
+    100% {
+        top: -140px;
+    }
+}
+@keyframes cardClose {
+    from {
+        top: -140px;
+    }
+    100% {
+        top: 5px;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+@keyframes shadow {
+    0% {
+        width: 370px;
+    }
+    50% {
+        width: 410px;
+    }
+    100% {
+        width: 370px;
+    }
+}
+.envelope-wrapper {
+    position: relative;
+}
+.shadow {
+    height: 500px;
+    width: 450px;
+    background-color: rgba(85, 85, 85, 0.623);
+    position: absolute;
+    left: 50%;
+    border-top: none;
+    bottom: -300px;
+    transform: translateX(-50%) rotateX(93deg);
+    border-radius: 1000px;
+    animation: shadow 2000ms linear infinite forwards;
+}
